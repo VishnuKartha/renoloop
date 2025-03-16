@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://renoloop.com',
+  site: 'https://VishnuKartha.github.io',
   base: '/',
 });
