@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Loading from '../components/Loading.astro';
+---
+
+<Layout title="RanierLabs | AI-Powered Sales Solutions">
+	<Loading />
+	<Nav />
+	<main>
+		<div class="spline-container">
+			<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.58/build/spline-viewer.js"></script>
+			<spline-viewer url="https://prod.spline.design/xyTOoLyDC8sFHaM1/scene.splinecode"></spline-viewer>
+			<div class="hero-content">
+				<h1>
+					<span class="gradient-text reveal-text">RanierLabs</span>
+				</h1>
+				<p class="subtitle reveal-text-delay">
+					AI-powered sales solutions for contractors
+				</p>
+			</div>
+			<div class="copyright-text">
+				© 2025 RanierLabs
+			</div>
+		</div>
+	</main>
+	<Footer variant="home" />
+</Layout>
+
+<script>
+	window.addEventListener('load', () => {
+		setTimeout(() => {
+			const loader = document.querySelector('.loading-container');
+			if (loader) {
+				loader.classList.add('fade-out');
+				setTimeout(() => {
+					loader.remove();
+				}, 300);
+			}
+		}, 100); // 0.1 second delay
+	});
+</script>
+
+<style>
+	main {
+		height: 100vh;
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+	}
+
+	.spline-container {
+		width: 100vw;
+		height: 100vh;
+		position: relative;
+	}
+
+	spline-viewer {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.hero-content {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 10;
+		width: 100%;
+		padding: 2rem;
+		text-align: center;
+		color: white;
+		pointer-events: none;
+	}
+
+	.copyright-text {
+		position: absolute;
+		bottom: 1rem;
+		left: 1rem;
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 0.8rem;
+		z-index: 10;
+		pointer-events: none;
+	}
+
+	h1 {
+		font-size: clamp(3rem, 10vw, 6rem);
+		font-weight: 700;
+		letter-spacing: -2px;
+		margin-bottom: 1rem;
+	}
+
+	.subtitle {
+		font-size: clamp(1rem, 2vw, 1.5rem);
+		opacity: 0.8;
+	}
+
+	.gradient-text {
+		background: linear-gradient(135deg, 
+			#c084fc 0%, 
+			#8b5cf6 25%, 
+			#6366f1 50%,
+			#8b5cf6 75%,
+			#c084fc 100%
+		);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 200% 200%;
+		animation: gradient 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+	}
+
+	.reveal-text {
+		animation: reveal 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.reveal-text-delay {
+		animation: reveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+	}
+
+	@keyframes gradient {
+		0% { background-position: 0% 50%; }
+		50% { background-position: 100% 50%; }
+		100% { background-position: 0% 50%; }
+	}
+
+	@keyframes reveal {
+		from {
+			clip-path: inset(0 100% 0 0);
+			opacity: 0;
+		}
+		to {
+			clip-path: inset(0 0 0 0);
+			opacity: 1;
+		}
+	}
+</style>

@@ -1,0 +1,20 @@
+{
+  "name": "@example/basics",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy": "astro build && gh-pages -d dist"
+  },
+  "dependencies": {
+    "astro": "^4.15.3",
+    "@phosphor-icons/web": "^2.0.3",
+    "@formspree/core": "^2.5.1",
+    "gh-pages": "^6.1.1"
+  }
+}

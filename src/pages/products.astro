@@ -1,0 +1,280 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Products | Growrilla.ai">
+	<Nav />
+	<main>
+		<section class="hero">
+			<div class="hero-content">
+				<h1 class="reveal-text">Our Products</h1>
+				<p class="subtitle reveal-text-delay">AI-powered solutions for home improvement businesses</p>
+			</div>
+		</section>
+
+		<section class="products">
+			<div class="product-card float-in" style="animation-delay: 0.1s">
+				<div class="icon-wrapper">
+					<i class="ph ph-arrows-counter-clockwise"></i>
+				</div>
+				<h2>Lead ReHash™</h2>
+				<p class="description">Transform cold leads into hot opportunities with AI-powered lead revival system.</p>
+				<ul class="features">
+					<li>Smart lead scoring and prioritization</li>
+					<li>Automated follow-up sequences</li>
+					<li>Personalized re-engagement strategies</li>
+					<li>Performance analytics and insights</li>
+				</ul>
+				<a href="/contact" class="product-cta">Contact Us</a>
+				<div class="card-glow"></div>
+			</div>
+
+			<div class="product-card float-in" style="animation-delay: 0.2s">
+				<div class="icon-wrapper">
+					<i class="ph ph-presentation-chart"></i>
+				</div>
+				<h2>Personalized Sales Solutions</h2>
+				<p class="description">AI-generated sales presentations tailored to each customer's needs.</p>
+				<ul class="features">
+					<li>Dynamic content generation</li>
+					<li>Real-time customization</li>
+					<li>Visual proposal builder</li>
+					<li>Integration with CRM systems</li>
+				</ul>
+				<a href="/contact" class="product-cta">Contact Us</a>
+				<div class="card-glow"></div>
+			</div>
+
+			<div class="product-card float-in" style="animation-delay: 0.3s">
+				<div class="icon-wrapper">
+					<i class="ph ph-users-three"></i>
+				</div>
+				<h2>AI Consultancy</h2>
+				<p class="description">Expert guidance to transform your sales process with AI technology.</p>
+				<ul class="features">
+					<li>Process optimization</li>
+					<li>AI implementation strategy</li>
+					<li>Team training and support</li>
+					<li>Ongoing performance optimization</li>
+				</ul>
+				<a href="/contact" class="product-cta">Contact Us</a>
+				<div class="card-glow"></div>
+			</div>
+		</section>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		min-height: calc(100vh - 64px - 140px);
+		color: white;
+		padding-top: 5rem;
+	}
+
+	.hero {
+		text-align: center;
+		padding: 4rem 2rem;
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+
+	.hero h1 {
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		font-weight: 700;
+		margin-bottom: 1rem;
+		background: linear-gradient(135deg, #c084fc, #8b5cf6);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.subtitle {
+		font-size: clamp(1rem, 2vw, 1.25rem);
+		opacity: 0.8;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	.products {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2rem;
+		padding: 2rem;
+		max-width: 1400px;
+		margin: 0 auto;
+	}
+
+	.product-card {
+		background: rgba(139, 92, 246, 0.03);
+		border: 1px solid rgba(139, 92, 246, 0.1);
+		padding: 2rem;
+		border-radius: 1.5rem;
+		backdrop-filter: blur(10px);
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		position: relative;
+		overflow: hidden;
+		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		height: 100%;
+	}
+
+	.product-card:hover {
+		transform: translateY(-5px);
+	}
+
+	.icon-wrapper {
+		width: 3rem;
+		height: 3rem;
+		background: linear-gradient(135deg, #c084fc, #8b5cf6);
+		border-radius: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 0.5rem;
+	}
+
+	.icon-wrapper i {
+		font-size: 1.5rem;
+		color: white;
+	}
+
+	.product-card h2 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		background: linear-gradient(135deg, #c084fc, #8b5cf6);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.description {
+		font-size: 1rem;
+		opacity: 0.8;
+		line-height: 1.6;
+	}
+
+	.features {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.features li {
+		font-size: 0.9rem;
+		opacity: 0.8;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.features li::before {
+		content: '';
+		width: 0.5rem;
+		height: 0.5rem;
+		background: linear-gradient(135deg, #c084fc, #8b5cf6);
+		border-radius: 50%;
+	}
+
+	.product-cta {
+		background: linear-gradient(135deg, #c084fc, #8b5cf6);
+		border: none;
+		padding: 0.8rem 1.5rem;
+		font-size: 1rem;
+		color: white;
+		border-radius: 3rem;
+		cursor: pointer;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		position: relative;
+		font-weight: 500;
+		margin-top: auto;
+		z-index: 1;
+		text-decoration: none;
+		text-align: center;
+		display: inline-block;
+	}
+
+	.product-cta:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+	}
+
+	.card-glow {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 150%;
+		height: 150%;
+		background: radial-gradient(circle at center,
+			rgba(139, 92, 246, 0.15) 0%,
+			transparent 70%);
+		transform: translate(-50%, -50%) scale(0);
+		transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+		z-index: 0;
+		pointer-events: none;
+	}
+
+	.product-card:hover .card-glow {
+		transform: translate(-50%, -50%) scale(1);
+	}
+
+	.reveal-text {
+		animation: reveal 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.reveal-text-delay {
+		animation: reveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+	}
+
+	.float-in {
+		animation: floatIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+	}
+
+	@keyframes reveal {
+		from {
+			clip-path: inset(0 100% 0 0);
+			opacity: 0;
+		}
+		to {
+			clip-path: inset(0 0 0 0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes floatIn {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 1024px) {
+		.products {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			padding: 2rem 1rem;
+		}
+
+		.products {
+			grid-template-columns: 1fr;
+			padding: 1rem;
+		}
+
+		.product-card {
+			padding: 1.5rem;
+		}
+	}
+</style>

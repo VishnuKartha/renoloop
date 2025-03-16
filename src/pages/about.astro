@@ -1,0 +1,475 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="About Us | RanierLabs">
+	<Nav />
+	<main>
+		<section class="hero">
+			<div class="content-wrapper">
+				<h1 class="reveal-text">Our Story</h1>
+				<p class="subtitle reveal-text-delay">Revolutionizing sales automation since 2024</p>
+			</div>
+		</section>
+
+		<section class="timeline">
+			<div class="timeline-item hidden" data-direction="left">
+				<div class="timeline-content">
+					<div class="date">2010</div>
+					<h3>The Beginning</h3>
+					<p>Eli starts his journey in bathroom remodeling, gaining invaluable experience in the home improvement industry.</p>
+				</div>
+				<div class="timeline-dot"></div>
+			</div>
+
+			<div class="timeline-item hidden" data-direction="right">
+				<div class="timeline-content">
+					<div class="date">June 2024</div>
+					<h3>Leadership Role</h3>
+					<p>Eli becomes manager at Luxury Bath of Seattle, taking on a key leadership position in the company.</p>
+				</div>
+				<div class="timeline-dot"></div>
+			</div>
+
+			<div class="timeline-item hidden" data-direction="left">
+				<div class="timeline-content">
+					<div class="date">December 2024</div>
+					<h3>Remarkable Growth</h3>
+					<p>Under Eli's leadership, Luxury Bath of Seattle achieves an impressive 300% year-over-year growth.</p>
+				</div>
+				<div class="timeline-dot"></div>
+			</div>
+
+			<div class="timeline-item hidden" data-direction="right">
+				<div class="timeline-content">
+					<div class="date">January 2025</div>
+					<h3>RanierLabs is Born</h3>
+					<p>Founded with a mission to help other businesses achieve similar growth through AI-powered sales automation.</p>
+				</div>
+				<div class="timeline-dot"></div>
+			</div>
+		</section>
+
+		<section class="team">
+			<h2 class="team-title reveal-text">Our Team</h2>
+			<div class="team-grid">
+				<div class="team-member float-in" style="animation-delay: 0.1s">
+					<div class="member-image">
+						<img src="https://api.dicebear.com/7.x/initials/svg?seed=VK&backgroundColor=8b5cf6" alt="Vishnu Kartha" />
+					</div>
+					<div class="member-info">
+						<h3>Vishnu Kartha</h3>
+						<p class="member-role">Cofounder & CEO</p>
+						<p class="member-bio">A University of Washington graduate and co-founder of Student Connection Washington, Vishnu brings technical expertise and entrepreneurial experience to drive RanierLabs's innovative AI solutions.</p>
+					</div>
+					<div class="card-glow"></div>
+				</div>
+
+				<div class="team-member float-in" style="animation-delay: 0.2s">
+					<div class="member-image">
+						<img src="https://api.dicebear.com/7.x/initials/svg?seed=EG&backgroundColor=8b5cf6" alt="Eli Gunderman" />
+					</div>
+					<div class="member-info">
+						<h3>Eli Gunderman</h3>
+						<p class="member-role">Cofounder & COO</p>
+						<p class="member-bio">With over 10 years of experience in home improvement and a proven track record of driving exceptional growth as manager at Luxury Bath of Seattle, Eli brings deep industry expertise and innovative leadership to RanierLabs.</p>
+					</div>
+					<div class="card-glow"></div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<Footer />
+</Layout>
+
+<script>
+	const observerOptions = {
+		root: null,
+		rootMargin: '0px',
+		threshold: 0.4,
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.remove('hidden');
+				entry.target.classList.add('show');
+				observer.unobserve(entry.target);
+			}
+		});
+	}, observerOptions);
+
+	document.querySelectorAll('.timeline-item').forEach(item => {
+		observer.observe(item);
+	});
+</script>
+
+<style>
+	main {
+		min-height: calc(100vh - 64px - 140px);
+		color: white;
+		padding-top: 5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 6rem;
+	}
+
+	.hero {
+		height: 30vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		padding: 0 2rem;
+		max-width: 1400px;
+		margin: 0 auto;
+		width: 100%;
+		text-align: center;
+	}
+
+	.content-wrapper {
+		z-index: 1;
+	}
+
+	h1 {
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		font-weight: 700;
+		margin-bottom: 1rem;
+		background: linear-gradient(135deg, #c084fc, #8b5cf6);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.subtitle {
+		font-size: clamp(1rem, 2vw, 1.25rem);
+		opacity: 0.8;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	.timeline {
+		display: flex;
+		flex-direction: column;
+		gap: 4rem;
+		position: relative;
+		padding: 2rem;
+		max-width: 1400px;
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	.timeline::before {
+		content: '';
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 2px;
+		height: 100%;
+		background: linear-gradient(to bottom,
+			transparent,
+			rgba(139, 92, 246, 0.5) 10%,
+			rgba(139, 92, 246, 0.5) 90%,
+			transparent
+		);
+	}
+
+	.timeline-item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		width: 100%;
+		opacity: 1;
+		transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.timeline-content {
+		width: 40%;
+		background: rgba(139, 92, 246, 0.03);
+		border: 1px solid rgba(139, 92, 246, 0.1);
+		padding: 2rem;
+		border-radius: 1rem;
+		position: relative;
+		backdrop-filter: blur(10px);
+	}
+
+	.timeline-item:nth-child(odd) .timeline-content {
+		margin-right: 50%;
+		transform: translateX(-2rem);
+	}
+
+	.timeline-item:nth-child(even) .timeline-content {
+		margin-left: 50%;
+		transform: translateX(2rem);
+	}
+
+	.timeline-item.hidden {
+		opacity: 0;
+	}
+
+	.timeline-item.hidden[data-direction="left"] {
+		transform: translateX(-100px);
+	}
+
+	.timeline-item.hidden[data-direction="right"] {
+		transform: translateX(100px);
+	}
+
+	.timeline-item.show {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.timeline-dot {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 1rem;
+		height: 1rem;
+		background: linear-gradient(135deg, #c084fc, #8b5cf6);
+		border-radius: 50%;
+		z-index: 1;
+	}
+
+	.timeline-dot::before {
+		content: '';
+		position: absolute;
+		top: -4px;
+		left: -4px;
+		right: -4px;
+		bottom: -4px;
+		background: linear-gradient(135deg, #c084fc, #8b5cf6);
+		border-radius: 50%;
+		opacity: 0.3;
+		animation: pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+	}
+
+	.date {
+		font-size: 0.9rem;
+		color: #8b5cf6;
+		margin-bottom: 0.5rem;
+		font-weight: 500;
+	}
+
+	.timeline-content h3 {
+		font-size: 1.25rem;
+		margin-bottom: 0.5rem;
+		background: linear-gradient(135deg, #c084fc, #8b5cf6);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.timeline-content p {
+		font-size: 0.9rem;
+		opacity: 0.8;
+		line-height: 1.6;
+	}
+
+	.team {
+		padding: 2rem;
+		max-width: 1400px;
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	.team-title {
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 700;
+		margin-bottom: 3rem;
+		background: linear-gradient(135deg, #c084fc, #8b5cf6);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		text-align: center;
+	}
+
+	.team-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 2rem;
+	}
+
+	.team-member {
+		background: rgba(139, 92, 246, 0.03);
+		border: 1px solid rgba(139, 92, 246, 0.1);
+		padding: 2rem;
+		border-radius: 1.5rem;
+		backdrop-filter: blur(10px);
+		position: relative;
+		overflow: hidden;
+		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		height: 100%;
+	}
+
+	.team-member:hover {
+		transform: translateY(-5px);
+	}
+
+	.member-image {
+		width: 120px;
+		height: 120px;
+		margin: 0 auto 1.5rem;
+		border-radius: 50%;
+		overflow: hidden;
+		border: 3px solid rgba(139, 92, 246, 0.3);
+		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.team-member:hover .member-image {
+		transform: scale(1.05);
+	}
+
+	.member-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.member-info {
+		text-align: center;
+		position: relative;
+		z-index: 1;
+	}
+
+	.member-info h3 {
+		font-size: 1.5rem;
+		margin-bottom: 0.5rem;
+		background: linear-gradient(135deg, #c084fc, #8b5cf6);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.member-role {
+		font-size: 1rem;
+		color: #8b5cf6;
+		margin-bottom: 1rem;
+		font-weight: 500;
+	}
+
+	.member-bio {
+		font-size: 0.9rem;
+		line-height: 1.6;
+		opacity: 0.8;
+	}
+
+	.card-glow {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 150%;
+		height: 150%;
+		background: radial-gradient(circle at center,
+			rgba(139, 92, 246, 0.15) 0%,
+			transparent 70%);
+		transform: translate(-50%, -50%) scale(0);
+		transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+		z-index: 0;
+		pointer-events: none;
+	}
+
+	.team-member:hover .card-glow {
+		transform: translate(-50%, -50%) scale(1);
+	}
+
+	.reveal-text {
+		animation: reveal 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.reveal-text-delay {
+		animation: reveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+	}
+
+	.float-in {
+		animation: floatIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+	}
+
+	@keyframes reveal {
+		from {
+			clip-path: inset(0 100% 0 0);
+			opacity: 0;
+		}
+		to {
+			clip-path: inset(0 0 0 0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes floatIn {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes pulse {
+		0% { transform: scale(1); opacity: 0.3; }
+		50% { transform: scale(1.5); opacity: 0; }
+		100% { transform: scale(1); opacity: 0.3; }
+	}
+
+	@media (max-width: 768px) {
+		main {
+			padding-top: 4rem;
+			gap: 4rem;
+		}
+
+		.hero {
+			height: auto;
+			text-align: center;
+			padding: 2rem 1rem;
+		}
+
+		.timeline::before {
+			left: 2rem;
+		}
+
+		.timeline-dot {
+			left: 2rem;
+		}
+
+		.timeline-content {
+			width: calc(100% - 4rem);
+		}
+
+		.timeline-item:nth-child(odd) .timeline-content,
+		.timeline-item:nth-child(even) .timeline-content {
+			margin-right: 0;
+			margin-left: 4rem;
+			transform: none;
+		}
+
+		.timeline-item.hidden {
+			transform: translateY(30px);
+		}
+
+		.timeline-item.hidden[data-direction="left"],
+		.timeline-item.hidden[data-direction="right"] {
+			transform: translateY(30px);
+		}
+
+		.timeline-item.show {
+			transform: translateY(0);
+		}
+
+		.team-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.team {
+			padding: 1rem;
+		}
+
+		.team-member {
+			padding: 1.5rem;
+		}
+	}
+</style>

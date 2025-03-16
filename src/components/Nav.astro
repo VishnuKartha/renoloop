@@ -1,0 +1,185 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+---
+
+<nav class="navbar">
+  <div class="nav-content">
+    <a href="/" class="logo">
+      <span class="gradient-text">RanierLabs</span>
+    </a>
+    <div class="nav-links">
+      <a href="/products" class={`nav-link ${currentPath === '/products' ? 'active' : ''}`}>Products</a>
+      <a href="/about" class={`nav-link ${currentPath === '/about' ? 'active' : ''}`}>About Us</a>
+      <a href="/contact" class="nav-cta">Contact Us</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 0.75rem;
+    background: rgba(10, 6, 18, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(139, 92, 246, 0.1);
+    border-radius: 3rem;
+    width: calc(100% - 2rem);
+    max-width: 1200px;
+  }
+
+  .nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .logo {
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+    position: relative;
+  }
+
+  .logo::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #c084fc, #8b5cf6);
+    transition: width 0.3s ease;
+  }
+
+  .logo:hover::after {
+    width: 100%;
+  }
+
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #c084fc, #8b5cf6);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    opacity: 1;
+  }
+
+  .nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+  }
+
+  .nav-cta {
+    background: linear-gradient(135deg, #c084fc, #8b5cf6);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    color: white;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .nav-cta::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #c084fc, #8b5cf6);
+    border-radius: 3rem;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-cta:hover::after {
+    opacity: 0.5;
+    animation: glow 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, 
+      #c084fc 0%, 
+      #8b5cf6 25%, 
+      #6366f1 50%,
+      #8b5cf6 75%,
+      #c084fc 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes glow {
+    0% { filter: blur(5px); }
+    50% { filter: blur(15px); }
+    100% { filter: blur(5px); }
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      top: 0.5rem;
+      padding: 0.5rem;
+      width: calc(100% - 1rem);
+    }
+
+    .nav-content {
+      padding: 0 0.5rem;
+    }
+
+    .nav-links {
+      gap: 1rem;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+    }
+
+    .nav-cta {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>
