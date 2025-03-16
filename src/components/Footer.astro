@@ -38,9 +38,14 @@ const { variant = 'default' } = Astro.props;
     color: white;
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 100;
   }
 
   .footer.home {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     height: 80px;
     background: rgba(10, 6, 18, 0.4);
   }
